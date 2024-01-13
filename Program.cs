@@ -1,5 +1,12 @@
-﻿// Usage
-string otherClientIP = "50.46.242.76"; // Replace with actual IP
-int otherClientPort = 12345; // Replace with actual port
-NatPunchthroughClient client = new NatPunchthroughClient(otherClientIP, otherClientPort);
-client.StartPunchthroughProcess();
+﻿if (args.Length > 0 && args[0] == "client")
+{
+    Console.WriteLine("Starting client...");
+    var client = new Client();
+    client.Run();
+}
+else
+{
+    Console.WriteLine("Starting server...");
+    Server server = new Server();
+    server.Run();
+}

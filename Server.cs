@@ -1,24 +1,35 @@
-using System.Net;
-using System.Net.Sockets;
+using LiteNetLib;
+using LiteNetLib.Utils;
 
 public class Server
 {
-    private UdpClient udpListener;
-
-    public Server()
+    public void Run()
     {
-        udpListener = new UdpClient(new IPEndPoint(IPAddress.Any, 12345)); // Listening port
-    }
+        EventBasedNetListener listener = new EventBasedNetListener();
+        NetManager server = new NetManager(listener);
+        server.Start(9050 /* port */);
 
-    public void Start()
-    {
-        while (true)
+        listener.ConnectionRequestEvent += request =>
         {
-            IPEndPoint clientEndpoint = new IPEndPoint(IPAddress.Any, 0);
-            byte[] clientData = udpListener.Receive(ref clientEndpoint);
+            if (server.ConnectedPeersCount < 10 /* max connections */)
+                request.AcceptIfKey("SomeConnectionKey");
+            else
+                request.Reject();
+        };
 
-            // Process clientData and send back necessary information for NAT Punchthrough
-            // This typically involves storing client addresses and relaying them to other clients
+        listener.PeerConnectedEvent += peer =>
+        {
+            Console.WriteLine("We got connection: {0}", peer);  // Show peer ip
+            NetDataWriter writer = new NetDataWriter();         // Create writer class
+            writer.Put("Hello client!");                        // Put some string
+            peer.Send(writer, DeliveryMethod.ReliableOrdered);  // Send with reliability
+        };
+
+        while (!Console.KeyAvailable)
+        {
+            server.PollEvents();
+            Thread.Sleep(15);
         }
+        server.Stop();
     }
 }

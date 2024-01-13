@@ -1,59 +1,26 @@
-using System;
-using System.Net;
-using System.Net.Sockets;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections;
+using LiteNetLib;
 
-public class NatPunchthroughClient
+public class Client
 {
-    private UdpClient udpClient;
-    private IPEndPoint otherClientEndpoint;
-
-    public NatPunchthroughClient(string otherClientIP, int otherClientPort)
+    public void Run()
     {
-        udpClient = new UdpClient();
-        otherClientEndpoint = new IPEndPoint(IPAddress.Parse(otherClientIP), otherClientPort);
-    }
+        EventBasedNetListener listener = new EventBasedNetListener();
+        NetManager client = new NetManager(listener);
+        client.Start();
+        client.Connect("localhost" /* host ip or name */, 9050 /* port */, "SomeConnectionKey" /* text key or NetDataWriter */);
+        listener.NetworkReceiveEvent += (fromPeer, dataReader, deliveryMethod, channel) =>
+        {
+            Console.WriteLine("We got: {0}", dataReader.GetString(100 /* max length of string */));
+            dataReader.Recycle();
+        };
 
-    public void StartPunchthroughProcess()
-    {
-        Task.Run(() => SendMessagesAsync());
-        ReceiveMessagesAsync();
-    }
+        while (!Console.KeyAvailable)
+        {
+            client.PollEvents();
+            Thread.Sleep(15);
+        }
 
-    private async Task SendMessagesAsync()
-    {
-        try
-        {
-            while (true) // Or some condition to stop sending
-            {
-                byte[] message = Encoding.ASCII.GetBytes("Hello from client");
-                Console.WriteLine("Sending message");
-                await udpClient.SendAsync(message, message.Length, otherClientEndpoint);
-                await Task.Delay(1000); // Send every second, adjust as needed
-            }
-        }
-        catch (Exception ex)
-        {
-            // Handle exceptions
-        }
-    }
-
-    private void ReceiveMessagesAsync()
-    {
-        try
-        {
-            while (true) // Or some condition to stop receiving
-            {
-                var result = udpClient.ReceiveAsync().Result;
-                string receivedData = Encoding.ASCII.GetString(result.Buffer);
-                Console.WriteLine($"Received data: {receivedData}");
-                // Process received data
-            }
-        }
-        catch (Exception ex)
-        {
-            // Handle exceptions
-        }
+        client.Stop();
     }
 }

@@ -1,0 +1,15 @@
+c:\development\punchthrough\obj\Debug\net7.0\punchthrough.csproj.AssemblyReference.cache
+c:\development\punchthrough\obj\Debug\net7.0\punchthrough.GeneratedMSBuildEditorConfig.editorconfig
+c:\development\punchthrough\obj\Debug\net7.0\punchthrough.AssemblyInfoInputs.cache
+c:\development\punchthrough\obj\Debug\net7.0\punchthrough.AssemblyInfo.cs
+c:\development\punchthrough\obj\Debug\net7.0\punchthrough.csproj.CoreCompileInputs.cache
+c:\development\punchthrough\bin\Debug\net7.0\punchthrough.exe
+c:\development\punchthrough\bin\Debug\net7.0\punchthrough.deps.json
+c:\development\punchthrough\bin\Debug\net7.0\punchthrough.runtimeconfig.json
+c:\development\punchthrough\bin\Debug\net7.0\punchthrough.dll
+c:\development\punchthrough\bin\Debug\net7.0\punchthrough.pdb
+c:\development\punchthrough\obj\Debug\net7.0\punchthrough.dll
+c:\development\punchthrough\obj\Debug\net7.0\refint\punchthrough.dll
+c:\development\punchthrough\obj\Debug\net7.0\punchthrough.pdb
+c:\development\punchthrough\obj\Debug\net7.0\punchthrough.genruntimeconfig.cache
+c:\development\punchthrough\obj\Debug\net7.0\ref\punchthrough.dll

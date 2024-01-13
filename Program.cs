@@ -1,7 +1,7 @@
 ﻿if (args.Length > 1 && args[1] == "server")
 {
     var matchmaker = new Matchmaker();
-    await matchmaker.Run("http://20.118.203.253:64132/");
+    await matchmaker.Run("http://localhost:64132/");
 }
 else
 {

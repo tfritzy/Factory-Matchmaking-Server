@@ -1,9 +1,8 @@
-﻿if (args.Length > 1 && args[1] == "server")
-{
-    var matchmaker = new Matchmaker();
-    await matchmaker.Run("https://localhost:64132/");
-}
-else
-{
-    await WebSocketClient.Connect("wss://50.46.242.76:64132/");
-}
+using UDP;
+
+UDPSocket s = new UDPSocket();
+s.Server("127.0.0.1", 27000);
+
+UDPSocket c = new UDPSocket();
+c.Client("127.0.0.1", 27000);
+c.Send("TEST!");

@@ -13,6 +13,7 @@ class Matchmaker
         while (true)
         {
             HttpListenerContext httpContext = await httpListener.GetContextAsync();
+            Console.WriteLine("Client connected");
 
             if (httpContext.Request.IsWebSocketRequest)
             {

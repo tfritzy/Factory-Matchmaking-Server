@@ -143,7 +143,7 @@ class HolePunchServerTest : INatPunchListener
         _puncher.Start(ServerPort);
         _puncher.NatPunchModule.Init(this);
 
-        _c1.NatPunchModule.SendNatIntroduceRequest("192.168.1.26", ServerPort, "token1");
+        _c1.NatPunchModule.SendNatIntroduceRequest("50.46.242.76", ServerPort, "token1");
         // _c2.NatPunchModule.SendNatIntroduceRequest("localhost", ServerPort, "token1");
 
         // keep going until ESCAPE is pressed

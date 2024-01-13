@@ -15,6 +15,7 @@ class WebSocketClient
             Console.WriteLine($"Connected to {uri}");
 
             await Send(client, "Hello from the client!");
+
             await Receive(client);
         }
         catch (Exception ex)

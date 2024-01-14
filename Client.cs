@@ -21,11 +21,29 @@ class UdpEchoClient
 
                 // Receive the server's response (which should be an echo).
                 IPEndPoint remoteEndPoint = new IPEndPoint(IPAddress.Any, 0);
-                byte[] receivedBytes = udpClient.Receive(ref remoteEndPoint);
 
-                // Convert bytes to string.
-                string receivedText = Encoding.UTF8.GetString(receivedBytes);
-                Console.WriteLine($"Received: {receivedText}");
+                while (true)
+                {
+                    byte[] receivedBytes = udpClient.Receive(ref remoteEndPoint);
+
+                    // Convert bytes to string.
+                    string receivedText = Encoding.UTF8.GetString(receivedBytes);
+                    Console.WriteLine($"Received: {receivedText}");
+
+                    // Check if the response is the one we're waiting for.
+                    if (receivedText.Contains("Connect to:"))
+                    {
+                        var address = receivedText.Split("Connect to:")[1];
+                        Console.WriteLine($"Connecting to peer: {address}...");
+
+                        byte[] helloPeer = Encoding.UTF8.GetBytes("Hello, Peer! I'm your friend.");
+
+                        var ip = address.Split(':')[0];
+                        var port = int.Parse(address.Split(':')[1]);
+                        udpClient.Send(helloPeer, helloPeer.Length, ip, port);
+                        break;
+                    }
+                }
             }
             catch (Exception e)
             {

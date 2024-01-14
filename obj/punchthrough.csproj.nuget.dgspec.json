@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\dev\\PunchthroughTesting\\punchthrough.csproj": {}
+    "e:\\dev\\PunchthroughTesting\\punchthrough.csproj": {}
   },
   "projects": {
-    "E:\\dev\\PunchthroughTesting\\punchthrough.csproj": {
+    "e:\\dev\\PunchthroughTesting\\punchthrough.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\dev\\PunchthroughTesting\\punchthrough.csproj",
+        "projectUniqueName": "e:\\dev\\PunchthroughTesting\\punchthrough.csproj",
         "projectName": "punchthrough",
-        "projectPath": "E:\\dev\\PunchthroughTesting\\punchthrough.csproj",
+        "projectPath": "e:\\dev\\PunchthroughTesting\\punchthrough.csproj",
         "packagesPath": "C:\\Users\\tfrit\\.nuget\\packages\\",
-        "outputPath": "E:\\dev\\PunchthroughTesting\\obj\\",
+        "outputPath": "e:\\dev\\PunchthroughTesting\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\tfrit\\AppData\\Roaming\\NuGet\\NuGet.Config",

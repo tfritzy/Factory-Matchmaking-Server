@@ -3,54 +3,40 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 
-namespace UDP
+class UdpEchoServer
 {
-    public class UDPSocket
+    public void Main()
     {
-        private Socket _socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
-        private const int bufSize = 8 * 1024;
-        private State state = new State();
-        private EndPoint epFrom = new IPEndPoint(IPAddress.Any, 0);
-        private AsyncCallback recv = null;
+        // Define the local endpoint (where messages are received).
+        int listenPort = 64132;
+        IPEndPoint localEndPoint = new IPEndPoint(IPAddress.Any, listenPort);
 
-        public class State
+        // Create a new UdpClient for reading incoming data.
+        using (UdpClient udpClient = new UdpClient(localEndPoint))
         {
-            public byte[] buffer = new byte[bufSize];
-        }
+            Console.WriteLine($"Listening for UDP messages on port {listenPort}...");
 
-        public void Server(string address, int port)
-        {
-            _socket.SetSocketOption(SocketOptionLevel.IP, SocketOptionName.ReuseAddress, true);
-            _socket.Bind(new IPEndPoint(IPAddress.Parse(address), port));
-            Receive();
-        }
-
-        public void Client(string address, int port)
-        {
-            _socket.Connect(IPAddress.Parse(address), port);
-            Receive();
-        }
-
-        public void Send(string text)
-        {
-            byte[] data = Encoding.ASCII.GetBytes(text);
-            _socket.BeginSend(data, 0, data.Length, SocketFlags.None, (ar) =>
+            try
             {
-                State so = (State)ar.AsyncState;
-                int bytes = _socket.EndSend(ar);
-                Console.WriteLine("SEND: {0}, {1}", bytes, text);
-            }, state);
-        }
+                while (true)
+                {
+                    // Receive a message from any source.
+                    IPEndPoint remoteEndPoint = new IPEndPoint(IPAddress.Any, 0);
+                    byte[] receivedBytes = udpClient.Receive(ref remoteEndPoint);
 
-        private void Receive()
-        {
-            _socket.BeginReceiveFrom(state.buffer, 0, bufSize, SocketFlags.None, ref epFrom, recv = (ar) =>
+                    // Convert bytes to string.
+                    string receivedText = Encoding.UTF8.GetString(receivedBytes);
+                    Console.WriteLine($"Received: {receivedText}");
+
+                    // Echo the message back to the sender.
+                    udpClient.Send(receivedBytes, receivedBytes.Length, remoteEndPoint);
+                    Console.WriteLine($"Echoed back to {remoteEndPoint}");
+                }
+            }
+            catch (Exception e)
             {
-                State so = (State)ar.AsyncState;
-                int bytes = _socket.EndReceiveFrom(ar, ref epFrom);
-                _socket.BeginReceiveFrom(so.buffer, 0, bufSize, SocketFlags.None, ref epFrom, recv, so);
-                Console.WriteLine("RECV: {0}: {1}, {2}", epFrom.ToString(), bytes, Encoding.ASCII.GetString(so.buffer, 0, bytes));
-            }, state);
+                Console.WriteLine(e.ToString());
+            }
         }
     }
 }

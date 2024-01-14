@@ -38,10 +38,10 @@ class UdpEchoServer
                     {
                         byte[] messageFor1 =
                             Encoding.UTF8.GetBytes(
-                                $"Connect to:{remoteEndPoint.Address}:{remoteEndPoint.Port}.");
+                                $"Connect to:{remoteEndPoint.Address}:{remoteEndPoint.Port}");
                         byte[] messageFor2 =
                             Encoding.UTF8.GetBytes(
-                                $"Connect to:{waitingClient.Address}:{waitingClient.Port}.");
+                                $"Connect to:{waitingClient.Address}:{waitingClient.Port}");
                         udpClient.Send(messageFor1, messageFor1.Length, waitingClient);
                         udpClient.Send(messageFor2, messageFor2.Length, remoteEndPoint);
                         waitingClient = null;

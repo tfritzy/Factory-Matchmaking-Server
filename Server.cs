@@ -30,7 +30,7 @@ class UdpEchoServer
                     if (waitingClient == null)
                     {
                         byte[] message =
-                            Encoding.UTF8.GetBytes("Welcome! There's no pair for you currently. Waiting for a fren...");
+                            Encoding.UTF8.GetBytes("Welcome! There's no pair for you currently. Waiting for a friend...");
                         udpClient.Send(message, message.Length, remoteEndPoint);
                         waitingClient = remoteEndPoint;
                     }

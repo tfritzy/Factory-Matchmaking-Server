@@ -36,12 +36,12 @@ class UdpEchoClient
                         var address = receivedText.Split("Connect to:")[1];
                         Console.WriteLine($"Connecting to peer: {address}...");
 
-                        byte[] helloPeer = Encoding.UTF8.GetBytes("Hello, Peer! I'm your friend.");
+                        byte[] helloPeer = Encoding.UTF8.GetBytes("Hello laptop. I'm a desktop.");
 
                         var ip = address.Split(':')[0];
                         var port = int.Parse(address.Split(':')[1]);
-                        udpClient.Send(helloPeer, helloPeer.Length, ip, port);
-                        break;
+
+                        Task.Run(async () => await SendMessageEverySecond(udpClient, "Hello laptop!", ip, port));
                     }
                 }
             }
@@ -49,6 +49,16 @@ class UdpEchoClient
             {
                 Console.WriteLine(e.ToString());
             }
+        }
+    }
+
+    private async Task SendMessageEverySecond(UdpClient udpClient, string message, string ip, int port)
+    {
+        while (true)
+        {
+            byte[] bytesToSend = Encoding.UTF8.GetBytes(message);
+            await udpClient.SendAsync(bytesToSend, bytesToSend.Length, ip, port);
+            await Task.Delay(1000);
         }
     }
 }

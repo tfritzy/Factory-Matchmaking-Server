@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "kuBq029wv3W62yY/biH0GTE438tqde78TKVZhI4TuFVyEqyQAIz9pyuzBAjO70wUo+0UkcnNHeEyF3oMqjixjQ==",
+  "success": true,
+  "projectFilePath": "E:\\dev\\PunchthroughTesting\\Server\\punchthrough.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\tfrit\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

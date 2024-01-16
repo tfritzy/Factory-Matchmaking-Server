@@ -1,0 +1,12 @@
+E:\dev\PunchthroughTesting\Server\bin\Debug\net7.0\punchthrough.deps.json
+E:\dev\PunchthroughTesting\Server\bin\Debug\net7.0\punchthrough.dll
+E:\dev\PunchthroughTesting\Server\bin\Debug\net7.0\punchthrough.pdb
+E:\dev\PunchthroughTesting\Server\obj\Debug\net7.0\punchthrough.csproj.AssemblyReference.cache
+E:\dev\PunchthroughTesting\Server\obj\Debug\net7.0\punchthrough.GeneratedMSBuildEditorConfig.editorconfig
+E:\dev\PunchthroughTesting\Server\obj\Debug\net7.0\punchthrough.AssemblyInfoInputs.cache
+E:\dev\PunchthroughTesting\Server\obj\Debug\net7.0\punchthrough.AssemblyInfo.cs
+E:\dev\PunchthroughTesting\Server\obj\Debug\net7.0\punchthrough.csproj.CoreCompileInputs.cache
+E:\dev\PunchthroughTesting\Server\obj\Debug\net7.0\punchthrough.dll
+E:\dev\PunchthroughTesting\Server\obj\Debug\net7.0\refint\punchthrough.dll
+E:\dev\PunchthroughTesting\Server\obj\Debug\net7.0\punchthrough.pdb
+E:\dev\PunchthroughTesting\Server\obj\Debug\net7.0\ref\punchthrough.dll

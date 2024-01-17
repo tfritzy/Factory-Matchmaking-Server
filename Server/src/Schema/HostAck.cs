@@ -2,6 +2,8 @@ using System.Text.Json.Serialization;
 
 public class HostAck
 {
+    public const string MessageType = "HostAck";
+
     [JsonPropertyName("type")]
-    public const string Type = "HostAck";
+    public string Type = MessageType;
 }

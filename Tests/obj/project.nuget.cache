@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "P44RoZOfe8h+Ncv2ZaXP65+7nIHgIWwy0vfre7+tsNLphPQTZ9NYzaU6vwVfO/boC1uw3xfY7JIjux3Z7iCoQQ==",
+  "dgSpecHash": "DqfpDVDb+iXo56m+2ZpiqsbCDOMlfu2EcdueM5oXNh3ur8dNZ/8Bh8lJmFwRQCwpe1VaL3tsA8v+Cb9itxevxA==",
   "success": true,
-  "projectFilePath": "E:\\dev\\PunchthroughTesting\\Tests\\ServerTests.csproj",
+  "projectFilePath": "C:\\development\\punchthrough\\Tests\\ServerTests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\tfrit\\.nuget\\packages\\coverlet.collector\\3.1.2\\coverlet.collector.3.1.2.nupkg.sha512",
     "C:\\Users\\tfrit\\.nuget\\packages\\microsoft.codecoverage\\17.3.2\\microsoft.codecoverage.17.3.2.nupkg.sha512",

@@ -7,5 +7,6 @@ public class WaitingHost
     public WaitingHost(IPEndPoint endPoint)
     {
         EndPoint = endPoint;
+        JoinedAt = DateTime.Now;
     }
 }

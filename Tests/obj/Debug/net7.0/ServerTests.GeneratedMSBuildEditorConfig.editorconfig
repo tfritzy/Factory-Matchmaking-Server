@@ -8,4 +8,4 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = ServerTests
-build_property.ProjectDir = E:\dev\PunchthroughTesting\Tests\
+build_property.ProjectDir = C:\development\punchthrough\Tests\

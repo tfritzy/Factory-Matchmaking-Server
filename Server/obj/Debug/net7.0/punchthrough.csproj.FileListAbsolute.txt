@@ -10,3 +10,15 @@ E:\dev\PunchthroughTesting\Server\obj\Debug\net7.0\punchthrough.dll
 E:\dev\PunchthroughTesting\Server\obj\Debug\net7.0\refint\punchthrough.dll
 E:\dev\PunchthroughTesting\Server\obj\Debug\net7.0\punchthrough.pdb
 E:\dev\PunchthroughTesting\Server\obj\Debug\net7.0\ref\punchthrough.dll
+C:\development\punchthrough\Server\bin\Debug\net7.0\punchthrough.deps.json
+C:\development\punchthrough\Server\bin\Debug\net7.0\punchthrough.dll
+C:\development\punchthrough\Server\bin\Debug\net7.0\punchthrough.pdb
+C:\development\punchthrough\Server\obj\Debug\net7.0\punchthrough.csproj.AssemblyReference.cache
+C:\development\punchthrough\Server\obj\Debug\net7.0\punchthrough.GeneratedMSBuildEditorConfig.editorconfig
+C:\development\punchthrough\Server\obj\Debug\net7.0\punchthrough.AssemblyInfoInputs.cache
+C:\development\punchthrough\Server\obj\Debug\net7.0\punchthrough.AssemblyInfo.cs
+C:\development\punchthrough\Server\obj\Debug\net7.0\punchthrough.csproj.CoreCompileInputs.cache
+C:\development\punchthrough\Server\obj\Debug\net7.0\punchthrough.dll
+C:\development\punchthrough\Server\obj\Debug\net7.0\refint\punchthrough.dll
+C:\development\punchthrough\Server\obj\Debug\net7.0\punchthrough.pdb
+C:\development\punchthrough\Server\obj\Debug\net7.0\ref\punchthrough.dll

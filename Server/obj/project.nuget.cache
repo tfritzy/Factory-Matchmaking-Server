@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "kuBq029wv3W62yY/biH0GTE438tqde78TKVZhI4TuFVyEqyQAIz9pyuzBAjO70wUo+0UkcnNHeEyF3oMqjixjQ==",
+  "dgSpecHash": "+anAuLXGyA+EAXIxKKxNxJk6c5A66bTkFCFK2n2gMQ3Hjlp58DyBL06CvZdPEMX2RAFS2ZW6n2BaL2pJXKCifw==",
   "success": true,
-  "projectFilePath": "E:\\dev\\PunchthroughTesting\\Server\\punchthrough.csproj",
+  "projectFilePath": "C:\\development\\punchthrough\\Server\\punchthrough.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\tfrit\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
   ],

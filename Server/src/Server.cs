@@ -8,7 +8,6 @@ using Newtonsoft.Json.Linq;
 
 public class Server
 {
-    public const string HostAck = "AckHost";
     public Queue<WaitingClient> waitingClients = new Queue<WaitingClient>();
     public Queue<WaitingHost> waitingHosts = new Queue<WaitingHost>();
 
@@ -52,26 +51,40 @@ public class Server
             {
                 var waitingClient =
                     new WaitingClient(
-                        clientLookingForHost.Id,
-                        clientLookingForHost.Name,
                         remoteEndPoint);
-                Console.WriteLine($"Player {waitingClient.Name} has joined the queue.");
                 waitingClients.Enqueue(waitingClient);
+                var clientAck = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(new ClientAck()));
+                client.Send(clientAck, clientAck.Length, remoteEndPoint);
             }
         }
-        else if (type == HostCreatingGame.Type)
+        else if (type == HostCreatingGame.MessageType)
         {
             HostCreatingGame? hostCreatingGame =
                 JsonConvert.DeserializeObject<HostCreatingGame>(receivedText);
 
             if (hostCreatingGame != null)
             {
-                byte[] response = Encoding.UTF8.GetBytes(HostAck);
+                byte[] response = Encoding.UTF8.GetBytes(
+                    JsonConvert.SerializeObject(new HostAck()));
                 client.Send(response, response.Length, remoteEndPoint);
 
                 var waitingHost = new WaitingHost(remoteEndPoint);
                 waitingHosts.Enqueue(waitingHost);
             }
+        }
+
+        if (waitingClients.Count > 0 && waitingHosts.Count > 0)
+        {
+            WaitingClient waitingClient = waitingClients.Dequeue();
+            WaitingHost waitingHost = waitingHosts.Dequeue();
+
+            var informOfPeer = new InformOfPeer(waitingHost.EndPoint.Address.ToString(), waitingHost.EndPoint.Port);
+            byte[] informOfPeerBytes = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(informOfPeer));
+            client.Send(informOfPeerBytes, informOfPeerBytes.Length, waitingClient.EndPoint);
+
+            informOfPeer = new InformOfPeer(waitingClient.EndPoint.Address.ToString(), waitingClient.EndPoint.Port);
+            informOfPeerBytes = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(informOfPeer));
+            client.Send(informOfPeerBytes, informOfPeerBytes.Length, waitingHost.EndPoint);
         }
     }
 }
